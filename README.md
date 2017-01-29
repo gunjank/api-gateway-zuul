@@ -1,6 +1,6 @@
 # api-gateway-zuul - Based on Spring Zuul example
 
-Create  Gateway micro-service 
+###Create  Gateway micro-service 
 
 Spring Cloud Netflix includes an embedded Zuul proxy, which we can enable with the @EnableZuulProxy annotation. This will turn the Gateway application into a reverse proxy that forwards relevant calls to other services---such as our Book service.
 
@@ -37,7 +37,7 @@ Spring Cloud Zuul will automatically set the path to the application name. In th
 
 Notice the second-to-last property in our file: Spring Cloud Netflix Zuul uses Netflix’s Ribbon to perform client-side load balancing, and by default, Ribbon would use Netflix Eureka for service discovery. For this simple example, we’re skipping service discovery, so we’ve set ribbon.eureka.enabled to false. Since Ribbon now can’t use Eureka to look up services, we must specify a url for the Book service.
 
-Add a filter
+###Add a filter
 
 Now let’s see how we can filter requests through our proxy service. Zuul has four standard filter types:
 
@@ -50,9 +50,9 @@ post filters are executed after the request has been routed, and
 error filters execute if an error occurs in the course of handling the request.
 
 We’re going to write a pre filter. Spring Cloud Netflix picks up, as a filter, any @Bean which extends com.netflix.zuul.ZuulFilter and is available in the application context. Create a new directory, src/main/java/hello/filters/pre, and within it, create the filter file, SimpleFilter.java:
-
+```
 gateway/src/main/java/hello/filters/pre/SimpleFilter.java
-
+```
 link:complete/gateway/src/main/java/hello/filters/pre/SimpleFilter.java[]
 Filter classes implement four methods:
 
@@ -67,11 +67,12 @@ run() contains the functionality of the filter.
 Zuul filters store request and state information in (and share it by means of) the RequestContext. We’re using that to get at the HttpServletRequest, and then we log the HTTP method and URL of the request before it is sent on its way.
 
 The GatewayApplication class is annotated with @SpringBootApplication, which is equivalent to (among others) the @Configuration annotation that tells Spring to look in a given class for @Bean definitions. Add one for our SimpleFilter here:
-
+```
 gateway/src/main/java/hello/GatewayApplication.java
+```
+[src/main/java/hello/GatewayApplication.java](src/main/java/hello/GatewayApplication.java)
 
-link:complete/gateway/src/main/java/hello/GatewayApplication.java[]
-Trying it out
+###Trying it out
 
 
 Visit one of the sample json service or github user service, as http://localhost:8080/jsonplaceholder/posts/ or http://localhost:8080/users/gujank, and you should see your request’s method logged by the Gateway application before it’s handed on to the routed application:
