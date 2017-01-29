@@ -28,10 +28,11 @@ public class GatewayApplication {
 To forward requests from the Gateway application, we need to tell Zuul the routes that it should watch and the services to which to forward requests to those routes. We specify routes using properties under zuul.routes. Each of our microservices can have an entry under zuul.routes.NAME, where NAME is the application name (as stored in the spring.application.name property).
 
 Add the application.properties file to a new directory, src/main/resources, in the Gateway application. It should look like this:
-
+```
 gateway/src/main/resources/application.yml
+```
+[complete/gateway/src/main/resources/application.yml](complete/gateway/src/main/resources/application.yml)
 
-link:complete/gateway/src/main/resources/application.yml[]
 Spring Cloud Zuul will automatically set the path to the application name. In this sample because we set zuul.routes.books.url, so Zuul will proxy requests to /books to this URL.
 
 Notice the second-to-last property in our file: Spring Cloud Netflix Zuul uses Netflix’s Ribbon to perform client-side load balancing, and by default, Ribbon would use Netflix Eureka for service discovery. For this simple example, we’re skipping service discovery, so we’ve set ribbon.eureka.enabled to false. Since Ribbon now can’t use Eureka to look up services, we must specify a url for the Book service.
