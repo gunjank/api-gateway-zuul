@@ -1,10 +1,11 @@
 # api-gateway-zuul - Based on Spring Zuul example
+
 Create  Gateway micro-service 
 
 Spring Cloud Netflix includes an embedded Zuul proxy, which we can enable with the @EnableZuulProxy annotation. This will turn the Gateway application into a reverse proxy that forwards relevant calls to other services---such as our Book service.
 
 Open GatewayApplication class and add the annotation, like so:
-
+```
 gateway/src/main/java/hello/GatewayApplication.java
 
 package hello;
@@ -22,6 +23,8 @@ public class GatewayApplication {
   }
 
 }
+```
+
 To forward requests from the Gateway application, we need to tell Zuul the routes that it should watch and the services to which to forward requests to those routes. We specify routes using properties under zuul.routes. Each of our microservices can have an entry under zuul.routes.NAME, where NAME is the application name (as stored in the spring.application.name property).
 
 Add the application.properties file to a new directory, src/main/resources, in the Gateway application. It should look like this:
