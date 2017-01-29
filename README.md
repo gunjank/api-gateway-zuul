@@ -31,7 +31,7 @@ Add the application.properties file to a new directory, src/main/resources, in t
 ```
 gateway/src/main/resources/application.yml
 ```
-[complete/gateway/src/main/resources/application.yml](complete/gateway/src/main/resources/application.yml)
+[src/main/resources/application.yml](src/main/resources/application.yml)
 
 Spring Cloud Zuul will automatically set the path to the application name. In this sample because we set zuul.routes.books.url, so Zuul will proxy requests to /books to this URL.
 
