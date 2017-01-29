@@ -2,7 +2,7 @@
 
 ### Create  Gateway micro-service 
 
-Spring Cloud Netflix includes an embedded Zuul proxy, which we can enable with the @EnableZuulProxy annotation. This will turn the Gateway application into a reverse proxy that forwards relevant calls to other services---such as our Book service.
+Spring Cloud Netflix includes an embedded Zuul proxy, which we can enable with the @EnableZuulProxy annotation. This will turn the Gateway application into a reverse proxy that forwards relevant calls to other service(s).
 
 Open GatewayApplication class and add the annotation, like so:
 ```
@@ -33,9 +33,9 @@ gateway/src/main/resources/application.yml
 ```
 [src/main/resources/application.yml](src/main/resources/application.yml)
 
-Spring Cloud Zuul will automatically set the path to the application name. In this sample because we set zuul.routes.books.url, so Zuul will proxy requests to /books to this URL.
+Spring Cloud Zuul will automatically set the path to the application name. 
 
-Notice the second-to-last property in our file: Spring Cloud Netflix Zuul uses Netflix’s Ribbon to perform client-side load balancing, and by default, Ribbon would use Netflix Eureka for service discovery. For this simple example, we’re skipping service discovery, so we’ve set ribbon.eureka.enabled to false. Since Ribbon now can’t use Eureka to look up services, we must specify a url for the Book service.
+Notice the second-to-last property in our file: Spring Cloud Netflix Zuul uses Netflix’s Ribbon to perform client-side load balancing, and by default, Ribbon would use Netflix Eureka for service discovery. For this simple example, we’re skipping service discovery, so we’ve set ribbon.eureka.enabled to false. Since Ribbon now can’t use Eureka to look up services, we must specify a url for our service.
 
 ### Add a filter
 
