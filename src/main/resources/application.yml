@@ -1,0 +1,20 @@
+server:
+ port:8080
+######routes start
+zuul:
+ routes:
+  1:
+   path: /jsonplaceholder/**
+   url: https://jsonplaceholder.typicode.com/   
+   ribbon:
+    eureka:
+     enabled:false
+  2:
+   path: /users/**
+   url: https://api.github.com/users/
+   ribbon:
+    eureka:
+     enabled:false
+       
+######routes end
+
