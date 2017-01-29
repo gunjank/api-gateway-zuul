@@ -75,7 +75,7 @@ gateway/src/main/java/hello/GatewayApplication.java
 ###Trying it out
 
 
-Visit one of the sample json service or github user service, as http://localhost:8080/jsonplaceholder/posts/ or http://localhost:8080/users/gujank, and you should see your request’s method logged by the Gateway application before it’s handed on to the routed application:
+Visit one of the sample json service or github user service, as http://localhost:8080/1/posts/ or http://localhost:8080/2/gujank, and you should see your request’s method logged by the Gateway application before it’s handed on to the routed application:
 
 2017-01-28 22:58:50.857  INFO 51076 --- [nio-8080-exec-5] hello.filters.pre.SimpleFilter           : GET request to http://localhost:8080/users/gujank
 2017-01-28 22:58:54.532  INFO 51076 --- [nio-8080-exec-6] hello.filters.pre.SimpleFilter           : GET request to http://localhost:8080/jsonplaceholder/posts/
