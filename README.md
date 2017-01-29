@@ -37,7 +37,7 @@ Spring Cloud Zuul will automatically set the path to the application name. In th
 
 Notice the second-to-last property in our file: Spring Cloud Netflix Zuul uses Netflix’s Ribbon to perform client-side load balancing, and by default, Ribbon would use Netflix Eureka for service discovery. For this simple example, we’re skipping service discovery, so we’ve set ribbon.eureka.enabled to false. Since Ribbon now can’t use Eureka to look up services, we must specify a url for the Book service.
 
-###Add a filter
+### Add a filter
 
 Now let’s see how we can filter requests through our proxy service. Zuul has four standard filter types:
 
@@ -72,7 +72,7 @@ gateway/src/main/java/hello/GatewayApplication.java
 ```
 [src/main/java/hello/GatewayApplication.java](src/main/java/hello/GatewayApplication.java)
 
-###Trying it out
+### Trying it out
 
 
 Visit one of the sample json service or github user service, as http://localhost:8080/1/posts/ or http://localhost:8080/2/gujank, and you should see your request’s method logged by the Gateway application before it’s handed on to the routed application:
