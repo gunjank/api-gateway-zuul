@@ -11,7 +11,13 @@ zuul:
      enabled:false
   2:
    path: /2/**
-   url: https://api.github.com/users/
+   url: https://api.github.com/
+   ribbon:
+    eureka:
+     enabled:false
+  3:
+   path: /22/**
+   url: http://localhost:3000/
    ribbon:
     eureka:
      enabled:false

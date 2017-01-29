@@ -37,7 +37,7 @@ public class GatewayApplicationTest {
 
     @Test
     public void test() {
-        String resp = rest.getForObject("/2/gunjank", String.class);
+        String resp = rest.getForObject("/2/users/gunjank", String.class);
         assertThat(resp).contains("gunjank");
     }
 
