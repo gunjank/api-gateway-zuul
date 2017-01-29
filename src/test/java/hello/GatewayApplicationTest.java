@@ -28,16 +28,7 @@ public class GatewayApplicationTest {
 
     static ConfigurableApplicationContext bookService;
 
-    @BeforeClass
-    public static void startBookService() {
-        bookService = SpringApplication.run(BookService.class,
-                "--server.port=8090");
-    }
 
-    @AfterClass
-    public static void closeBookService() {
-        bookService.close();
-    }
 
     @Before
     public void setup() {
@@ -46,17 +37,9 @@ public class GatewayApplicationTest {
 
     @Test
     public void test() {
-        String resp = rest.getForObject("/books/available", String.class);
-        assertThat(resp).isEqualTo("books");
+        String resp = rest.getForObject("/users/gunjank", String.class);
+        assertThat(resp).contains("gunjank");
     }
 
-    @Configuration
-    @EnableAutoConfiguration
-    @RestController
-    static class BookService {
-        @RequestMapping("/available")
-        public String getAvailable() {
-            return "books";
-        }
-    }
+
 }
