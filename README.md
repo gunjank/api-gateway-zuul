@@ -1,6 +1,6 @@
 # api-gateway-zuul - Based on Spring Zuul example
 
-###Create  Gateway micro-service 
+### Create  Gateway micro-service 
 
 Spring Cloud Netflix includes an embedded Zuul proxy, which we can enable with the @EnableZuulProxy annotation. This will turn the Gateway application into a reverse proxy that forwards relevant calls to other services---such as our Book service.
 
